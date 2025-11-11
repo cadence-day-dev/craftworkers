@@ -47,6 +47,9 @@ export const NoFOUCScript = (storageKey: string) => {
     document.documentElement.setAttribute("data-mode", mode);
     restoreTransitions();
   };
+  
+  // Set initial data-mode to prevent hydration mismatch
+  document.documentElement.setAttribute("data-mode", SYSTEM);
   window.updateDOM();
   media.addEventListener("change", window.updateDOM);
 };
@@ -57,14 +60,15 @@ let updateDOM: () => void;
  * Switch button to quickly toggle user preference.
  */
 const Switch = () => {
-  const [mode, setMode] = useState<ColorSchemePreference>(
-    () =>
-      ((typeof localStorage !== "undefined" &&
-        localStorage.getItem(STORAGE_KEY)) ??
-        "system") as ColorSchemePreference,
-  );
+  const [mode, setMode] = useState<ColorSchemePreference>("system");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    // Initialize mode from localStorage after mounting
+    const storedMode = localStorage.getItem(STORAGE_KEY) ?? "system";
+    setMode(storedMode as ColorSchemePreference);
+    
     // store global functions to local variables to avoid any interference
     updateDOM = window.updateDOM;
     /** Sync the tabs */
@@ -74,15 +78,29 @@ const Switch = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, mode);
-    updateDOM();
-  }, [mode]);
+    if (mounted) {
+      localStorage.setItem(STORAGE_KEY, mode);
+      updateDOM();
+    }
+  }, [mode, mounted]);
 
   /** toggle mode */
   const handleModeSwitch = () => {
     const index = modes.indexOf(mode);
     setMode(modes[(index + 1) % modes.length]);
   };
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <button
+        suppressHydrationWarning
+        className={styles.switch}
+        onClick={handleModeSwitch}
+      />
+    );
+  }
+
   return (
     <button
       suppressHydrationWarning

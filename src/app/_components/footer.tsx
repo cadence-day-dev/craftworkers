@@ -1,28 +1,35 @@
 import Container from "@/app/_components/container";
-import { EXAMPLE_PATH } from "@/lib/constants";
+import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200 dark:bg-slate-800">
+    <footer className="bg-neutral-10 border-t border-neutral-200 mt-12">
       <Container>
-        <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-[2.5rem] font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            Statically Generated with Next.js.
-          </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
-            <a
-              href="https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
-            >
-              Read Documentation
-            </a>
-            <a
-              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
-              className="mx-3 font-bold hover:underline"
-            >
-              View on GitHub
-            </a>
+        <div className="py-8 md:py-8 flex flex-col md:flex-row items-start justify-between gap-8">
+          
+          {/* Newsletter Subscription */}
+          <div className="flex-1 max-w-md">
+            <h3 className="text-sm font-normal mb-4 uppercase tracking-wider">
+              SUBSCRIBE TO OUR NEWSLETTER
+            </h3>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-none text-sm focus:outline-none focus:border-black"
+              />
+              <button className="px-6 py-2 bg-white text-blacks  border border-gray-300 text-sm font-normal uppercase tracking-wider hover:bg-gray-800">
+                SUBSCRIBE
+              </button>
+            </div>
           </div>
+          
+        </div>
+        
+        {/* Bottom Links */}
+        <div className="border-t border-gray-200 pt-4 pb-4 flex justify-end gap-6 text-xs uppercase tracking-wider">
+          {/* <Link href="/privacy" className="hover:underline">PRIVACY POLICY</Link> */}
+          <Link href="/cookies" className="hover:underline">COOKIE POLICY</Link>
         </div>
       </Container>
     </footer>

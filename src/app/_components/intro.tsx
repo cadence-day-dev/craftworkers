@@ -1,21 +1,29 @@
 import { CMS_NAME } from "@/lib/constants";
+import Link from "next/link";
+import { MobileMenu } from "./mobile-menu";
 
 export function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
-        Blog.
-      </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        A statically generated blog example using{" "}
-        <a
-          href="https://nextjs.org/"
-          className="underline hover:text-blue-600 duration-200 transition-colors"
-        >
-          Next.js
-        </a>{" "}
-        and {CMS_NAME}.
+    <section className="flex flex-row items-center justify-between mt-8 mb-8">
+      <h3 className="text-2xl md:text-2xl tracking-tighter leading-tight md:pr-8 font-normal">
+        <Link href="/" className="hover:underline">
+         C r a f t
+        </Link>
+      </h3>
+      
+      {/* Desktop Navigation */}
+      <h4 className="hidden md:flex text-right text-sm font-normal tracking-widest">
+        <span className="mx-3"/>
+        <Link href="/about" className="hover:underline">
+          ABOUT
+        </Link>
+        <span className="mx-3"/>
+        <Link href="/contact" className="hover:underline">
+        SIGN IN
+        </Link>
       </h4>
+      {/* Mobile Menu */}
+      <MobileMenu />
     </section>
   );
 }
