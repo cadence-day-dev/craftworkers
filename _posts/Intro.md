@@ -1,5 +1,5 @@
 ---
-title: "Revealing liabilities"
+title: "Intro"
 excerpt: "There is a growing urgency to understand the environmental cost of what already exists. Regulation and taxation on embodied carbon are turning old buildings into new liabilities."
 coverImage: "/assets/blog/intro/cover.png"
 date: "2025-11-11T05:35:07.322Z"
