@@ -60,7 +60,7 @@ export default function Dashboard() {
         <article>
           <div className="max-w-6xl mx-auto px-5">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-base font-normal uppercase tracking-wider">Weekly Calendar</h2>
+              <h2 className="text-base font-normal uppercase tracking-wider">Team Work Patterns</h2>
             </div>
             <div>
               {loading && <p>Loading...</p>}

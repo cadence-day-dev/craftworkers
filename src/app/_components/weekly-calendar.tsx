@@ -14,51 +14,44 @@ interface WeeklyCalendarProps {
 }
 
 export default function WeeklyCalendar({ timeslices }: WeeklyCalendarProps) {
+  // Debug: Log all available timeslices and their activity IDs
+  console.log('Total timeslices:', timeslices?.length || 0);
+  console.log('All activity IDs:', [...new Set(timeslices?.map(t => t.activity_id) || [])]);
+  
   // Filter timeslices to only include specific activity ID
+  const targetActivityId = '15444261-b618-417a-9cf2-77f4744a92d4';
   const octoberTimeslices = timeslices.filter(timeslice => {
-    return timeslice.activity_id === '15444261-b618-417a-9cf2-77f4744a92d4';
+    const matches = timeslice.activity_id === targetActivityId;
+    if (matches) {
+      console.log('Found matching activity:', timeslice.activity_id, timeslice.start_time);
+    }
+    return matches;
   });
-  const timeSlots = Array.from({ length: 17 }, (_, i) => {
-    const hour = 9 + Math.floor(i / 2);
+  
+  console.log('Filtered timeslices count:', octoberTimeslices.length);
+  const timeSlots = Array.from({ length: 26 }, (_, i) => {
+    const hour = 7 + Math.floor(i / 2);
     const minute = (i % 2) * 30;
     return `${hour}:${minute.toString().padStart(2, '0')}`;
   });
 
-  // Generate week days dynamically from October data - limit to 5 days
+  // Generate all 31 days of October 2025
   const getWeekDays = () => {
-    if (!octoberTimeslices || octoberTimeslices.length === 0) {
-      return [
-        { label: 'SUN 6/1', date: '2024-06-01' },
-        { label: 'MON 6/2', date: '2024-06-02' },
-        { label: 'TUE 6/3', date: '2024-06-03' },
-        { label: 'WED 6/4', date: '2024-06-04' },
-        { label: 'THU 6/5', date: '2024-06-05' }
-      ];
-    }
-
-    // Find date range from October timeslices
-    const dates = octoberTimeslices.map(ts => {
-      try {
-        return new Date(ts.start_time).toISOString().split('T')[0];
-      } catch {
-        return null;
-      }
-    }).filter((date): date is string => date !== null);
-    
-    const uniqueDates = [...new Set(dates)].sort().slice(0, 5); // Limit to 5 days
-    
-    return uniqueDates.map((dateStr) => {
-      const date = new Date(dateStr + 'T12:00:00'); // Avoid timezone issues
+    const octoberDays = [];
+    for (let day = 1; day <= 31; day++) {
+      const date = new Date(2025, 9, day); // October is month 9 (0-indexed)
+      const dateStr = date.toISOString().split('T')[0];
       const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
       const dayName = dayNames[date.getDay()];
       const month = date.getMonth() + 1;
-      const day = date.getDate();
+      const dayNum = date.getDate();
       
-      return {
-        label: `${dayName} ${month}/${day}`,
+      octoberDays.push({
+        label: `${dayName} ${month}/${dayNum}`,
         date: dateStr
-      };
-    });
+      });
+    }
+    return octoberDays;
   };
 
   const weekDays = getWeekDays();
@@ -147,18 +140,18 @@ export default function WeeklyCalendar({ timeslices }: WeeklyCalendarProps) {
   return (
     <div className="w-full">
       <div className="overflow-x-auto">
-        <div className="min-w-[800px]">
-          <div className={`grid gap-0 border border-gray-200 rounded-lg overflow-hidden shadow-sm`} style={{gridTemplateColumns: `120px repeat(${weekDays.length}, 1fr)`}}>
+        <div className="min-w-[2400px]">
+          <div className={`grid gap-0 border border-gray-200 overflow-hidden shadow-sm`} style={{gridTemplateColumns: `120px repeat(${weekDays.length}, 1fr)`}}>
           <div className="bg-white p-3 border-r border-gray-200 text-sm font-semibold text-gray-700"></div>
           {weekDays.map((day) => (
-            <div key={day.date} className="bg-white p-3 border-r border-gray-200 text-sm font-semibold text-gray-700 text-center">
+            <div key={day.date} className="bg-white p-3 border-r border-gray-200 text-sm font-normal text-gray-700 text-center">
               {day.label}
             </div>
           ))}
           
           {timeSlots.map((timeSlot) => (
             <div key={timeSlot} className="contents">
-              <div className="p-3 border-r border-b border-gray-200 text-sm text-gray-500 bg-gray-50 font-medium">
+              <div className="p-3 border-r border-b border-gray-200 text-sm text-gray-500 font-medium">
                 {timeSlot}
               </div>
               {weekDays.map((day) => {
@@ -171,8 +164,8 @@ export default function WeeklyCalendar({ timeslices }: WeeklyCalendarProps) {
                     {dayTimeslices.map((timeslice, index) => (
                       <div
                         key={timeslice.id || index}
-                        className={`absolute inset-1 rounded-sm bg-gray-200 shadow-sm cursor-pointer hover:shadow-md transition-shadow`}
-                        title={`${timeslice.note || 'Activity'} - ${new Date(timeslice.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} (${getRepeatabilityLevel(timeslice)} repeatability)`}
+                        className={`absolute inset-1 bg-black cursor-pointer`}
+                        title={`${timeslice.note || 'Activity'} - ${new Date(timeslice.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`}
                       />
                     ))}
                   </div>

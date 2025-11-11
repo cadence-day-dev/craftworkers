@@ -27,7 +27,7 @@ export default function SignIn() {
           <div>
             <input
               type="text"
-              placeholder="Username"
+              placeholder="Username -> craft"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full px-0 py-3 text-gray-900 placeholder-gray-400 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none focus:ring-0"
@@ -38,7 +38,7 @@ export default function SignIn() {
           <div>
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Password -> hi"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-0 py-3 text-gray-900 placeholder-gray-400 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none focus:ring-0"
