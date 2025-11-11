@@ -23,7 +23,7 @@ export function Intro() {
         </Link>
         <span className="mx-3"/>
         <Link href="/dashboard" className="hover:underline flex items-center -translate-y-0.42">
-SIGN IN
+        PORTAL
         </Link>
       </h4>
       {/* Mobile Menu */}

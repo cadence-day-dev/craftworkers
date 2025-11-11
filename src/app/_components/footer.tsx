@@ -7,8 +7,14 @@ export function Footer() {
       <Container>
         <div className="py-8 md:py-8 flex flex-col md:flex-row items-start justify-between gap-8">
           
+        <div className="flex gap-6 text-sm  uppercase tracking-wider">
+            <Link href="/about" className="hover:underline">About</Link>
+            <Link href="/work" className="hover:underline">Work</Link>
+            <Link href="/dashboard" className="hover:underline">PORTAL</Link>
+            {/* <Link href="/process" className="hover:underline">INSTAGRAM</Link> */}
+          </div>
           {/* Newsletter Subscription */}
-          <div className="flex-1 max-w-md">
+          {/* <div className="flex-1 max-w-md">
             <h3 className="text-sm font-normal mb-4 uppercase tracking-wider">
               SUBSCRIBE TO OUR NEWSLETTER
             </h3>
@@ -22,8 +28,8 @@ export function Footer() {
                 SUBSCRIBE
               </button>
             </div>
-          </div>
-          
+          </div> */}
+  
         </div>
         
         {/* Bottom Links */}
