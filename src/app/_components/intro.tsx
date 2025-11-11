@@ -18,8 +18,14 @@ export function Intro() {
           ABOUT
         </Link>
         <span className="mx-3"/>
-        <Link href="/contact" className="hover:underline">
-        SIGN IN
+        <Link href="/work" className="hover:underline">
+          WORK
+        </Link>
+        <span className="mx-3"/>
+        <Link href="/dashboard" className="hover:underline flex items-center -translate-y-0.42">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6H12M12 6L8 2M12 6L8 10" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
         </Link>
       </h4>
       {/* Mobile Menu */}
