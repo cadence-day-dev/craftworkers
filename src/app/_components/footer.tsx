@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-10 border-t border-neutral-200 mt-12">
+    <footer className="bg-neutral-10  border-neutral-200 mt-12">
       <Container>
-        <div className="py-8 md:py-8 flex flex-col md:flex-row items-start justify-between gap-8">
+        <div className="py-4 md:py-4 flex flex-col md:flex-row items-start justify-between gap-8">
           
-        <div className="flex gap-6 text-sm  uppercase tracking-wider">
+        <div className="flex gap-6 text-xs  uppercase tracking-wider">
             <Link href="/about" className="hover:underline">About</Link>
             <Link href="/work" className="hover:underline">Work</Link>
             <Link href="/dashboard" className="hover:underline">PORTAL</Link>
