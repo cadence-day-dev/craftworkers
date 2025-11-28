@@ -73,7 +73,7 @@ export function MobileMenu() {
                 className="text-lg font-normal hover:opacity-70 transition-opacity"
                 onClick={toggleMenu}
               >
-                WORK
+                DEMO
               </Link>
               {/* <Link 
                 href="/dashboard" 
