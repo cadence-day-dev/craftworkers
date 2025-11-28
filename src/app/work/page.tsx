@@ -10,15 +10,16 @@ export default function Work() {
         <Intro />
         <article className="mb-2.5 md:mb-32">
           <div className="max-w-2xl mx-auto">
-            <h1 className="text-md md:text-lg tracking-wider leading-tight mb-12 text-left uppercase font-normal">
-              Product
+            <h1 className="text-lg md:text-lg tracking-wider leading-tight text-left  font-normal">
+              Demo
             </h1>
             
-            <div className="text-lg leading-relaxed">
-              <p className="mb-6">
-                This is our current experiements with the product. We imagine it as a 
-              </p>
+            <div className="text-md leading-relaxed">
+              <img src="/assets/blog/systems/cover.png" alt="Demo" className="w-full h-auto" />
             </div>
+            <p className="mb-6">
+               This is our demo 
+              </p>
           </div>
         </article>
       </Container>
