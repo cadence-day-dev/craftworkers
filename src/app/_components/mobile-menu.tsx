@@ -75,13 +75,13 @@ export function MobileMenu() {
               >
                 WORK
               </Link>
-              <Link 
+              {/* <Link 
                 href="/dashboard" 
                 className="text-lg font-normal hover:opacity-70 transition-opacity"
                 onClick={toggleMenu}
               >
                 PORTAL
-              </Link>
+              </Link> */}
             </nav>
           </div>
         </div>

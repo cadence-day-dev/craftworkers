@@ -13,17 +13,14 @@ export function Intro() {
       
       {/* Desktop Navigation */}
       <h4 className="hidden md:flex text-right text-sm font-normal tracking-widest">
+
+        <span className="mx-3"/>
+        <Link href="/work" className="hover:underline">
+          DEMO
+        </Link>
         <span className="mx-3"/>
         <Link href="/about" className="hover:underline">
           ABOUT
-        </Link>
-        <span className="mx-3"/>
-        <Link href="/work" className="hover:underline">
-          WORK
-        </Link>
-        <span className="mx-3"/>
-        <Link href="/dashboard" className="hover:underline flex items-center -translate-y-0.42">
-        PORTAL
         </Link>
       </h4>
       {/* Mobile Menu */}
