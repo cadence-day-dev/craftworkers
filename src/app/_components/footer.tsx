@@ -9,8 +9,8 @@ export function Footer() {
           
         <div className="flex gap-6 text-xs  uppercase tracking-wider">
             <Link href="/about" className="hover:underline">About</Link>
-            <Link href="/work" className="hover:underline">Work</Link>
-            <Link href="/dashboard" className="hover:underline">PORTAL</Link>
+            <Link href="/work" className="hover:underline">Demo</Link>
+            {/* <Link href="/dashboard" className="hover:underline">PORTAL</Link> */}
             {/* <Link href="/process" className="hover:underline">INSTAGRAM</Link> */}
           </div>
           {/* Newsletter Subscription */}
