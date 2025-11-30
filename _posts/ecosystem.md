@@ -10,7 +10,7 @@ ogImage:
   url: "/assets/blog/ecosystem/cover.jpg"
 ---
 
-The building industry relies on an increasing number of digital tools, yet true value only emerges when these systems work seamlessly together. 
+The building industry relies on an increasing number of digital tools, yet true value only emerges when these systems work seamlessly together.. 
 
 Today, that ecosystem is often fragmented, forcing users to navigate complexity instead of benefiting from it. The real breakthrough comes from delivering interfaces that translate this interconnected data into simple, meaningful intelligence. 
 
